@@ -63,7 +63,7 @@ DESC
     def refresh_client(raise_error = true)
       begin
         logger = @get_kafka_client_log ? log : nil
-        @kafka = Kafka.new(seed_brokers: @brokers, client_id: @client_id, logger: logger, ssl_ca_cert: read_ssl_file(@ssl_ca_cert),
+        @kafka = Kafka.new(seed_brokers: @brokers, client_id: @client_id, logger: logger, ssl_ca_cert: read_ssl_files(@ssl_ca_cert),
                            ssl_client_cert: read_ssl_file(@ssl_client_cert), ssl_client_cert_key: read_ssl_file(@ssl_client_cert_key))
         log.info "initialized kafka producer: #{@client_id}"
       rescue Exception => e

@@ -123,7 +123,7 @@ class Fluent::KafkaGroupInput < Fluent::Input
     super
 
     @kafka = Kafka.new(seed_brokers: @brokers,
-                       ssl_ca_cert: read_ssl_file(@ssl_ca_cert),
+                       ssl_ca_cert: read_ssl_files(@ssl_ca_cert),
                        ssl_client_cert: read_ssl_file(@ssl_client_cert),
                        ssl_client_cert_key: read_ssl_file(@ssl_client_cert_key))
     @consumer = setup_consumer

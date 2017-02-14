@@ -157,7 +157,7 @@ class Fluent::KafkaInput < Fluent::Input
     opt[:min_bytes] = @min_bytes if @min_bytes
 
     @kafka = Kafka.new(seed_brokers: @brokers, client_id: @client_id,
-                       ssl_ca_cert: read_ssl_file(@ssl_ca_cert),
+                       ssl_ca_cert: read_ssl_files(@ssl_ca_cert),
                        ssl_client_cert: read_ssl_file(@ssl_client_cert),
                        ssl_client_cert_key: read_ssl_file(@ssl_client_cert_key))
     @zookeeper = Zookeeper.new(@offset_zookeeper) if @offset_zookeeper
